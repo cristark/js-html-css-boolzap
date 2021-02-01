@@ -43,22 +43,22 @@ a {
 }
 
 .left_container .header {
-  height: 7%;
+  height: 60px;
   background-color: #ededed;
 }
 
 .left_container .alert_mex {
-  height: 12%;
+  height: 85px;
   background-color: #9ee1fe;
 }
 
 .left_container .search_bar {
-  height: 6%;
+  height: 50px;
   background-color: #f6f6f6;
 }
 
 .left_container .chat_users {
-  height: 75%;
+  height: calc(100% - 195px);
   overflow: hidden;
   overflow-y: auto;
 }
@@ -115,4 +115,16 @@ a {
 .right_container {
   width: 70%;
   height: 100%;
+}
+
+.right_container .header,
+.right_container .footer_box {
+  height: 60px;
+  background-color: #ededed;
+  border: 0.5px solid rgba(128, 128, 128, 0.2);
+}
+
+.right_container .chat_box {
+  height: calc(100% - 120px);
+  background-image: url(../img/mine.jpg);
 }
