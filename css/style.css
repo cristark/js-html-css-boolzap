@@ -1,0 +1,69 @@
+/* | GENERAL | */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  color: black;
+}
+
+.background {
+  height: 100vh;
+  background-image: linear-gradient(
+    0deg,
+    rgba(209, 219, 220, 1) 0%,
+    rgba(219, 219, 211, 1) 100%
+  );
+}
+
+.top_background {
+  height: 15vh;
+  background-color: #009788;
+}
+
+.container {
+  width: 82%;
+  height: 95%;
+  margin: -100px auto 0;
+  background-color: #fff;
+  box-shadow: 0 2px 3px rgba(128, 128, 128, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.left_container {
+  width: 30%;
+  height: 100%;
+}
+
+.left_container .header {
+  height: 7%;
+  background-color: #ededed;
+}
+
+.left_container .alert_mex {
+  height: 12%;
+  background-color: #9ee1fe;
+}
+
+.left_container .search_bar {
+  height: 6%;
+  background-color: #f6f6f6;
+}
+
+.left_container .chat_users {
+  min-height: 75%;
+  overflow-y: scroll;
+}
+
+.right_container {
+  width: 70%;
+  height: 100%;
+  border: 1px solid red;
+}
