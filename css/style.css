@@ -221,9 +221,48 @@ a {
   height: 60px;
   background-color: #ededed;
   border: 0.5px solid rgba(128, 128, 128, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .right_container .chat_box {
   height: calc(100% - 120px);
   background-image: url(../img/mine.jpg);
+}
+
+.right_container .header .user_box {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.right_container .header .user_box img {
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.right_container .header .user_box p {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.right_container .header .user_box .user_text p:last-child {
+  font-size: 0.7em;
+  font-weight: 400;
+  color: #919191;
+}
+
+.right_container .header .user_icons {
+  display: flex;
+}
+
+.right_container .header .user_icons i {
+  margin-right: 35px;
+  font-size: 1.1em;
+  color: #919191;
+  cursor: pointer;
 }
