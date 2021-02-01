@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color: black;
+  text-decoration: none;
 }
 
 /* | MAIN | */
@@ -84,20 +84,82 @@ a {
   cursor: pointer;
 }
 
+/* ! Sezione aler notifiche */
 .left_container .alert_mex {
   height: 85px;
+  padding: 0 15px;
   background-color: #9ee1fe;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.left_container .search_bar {
+.alert_mex .alert_bell {
+  margin-right: 15px;
+}
+
+.alert_mex .alert_bell i {
+  color: #9ee1fe;
+  font-size: 1.2em;
+  background-color: #fff;
+  padding: 12px 10px;
+  border-radius: 50%;
+}
+
+.alert_mex .alert_text {
+  color: #184354;
+  font-weight: 400;
+}
+
+.alert_mex .alert_text a {
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #184354;
+}
+
+.alert_mex .alert_text a::after {
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 0.8em;
+  margin-left: 5px;
+  text-decoration: unset;
+}
+
+/* ! Barra di ricerca utenti */
+.left_container .search_bar_container {
+  width: 100%;
   height: 50px;
   background-color: #f6f6f6;
+  padding: 10px 5px;
+}
+
+.search_bar_container .search_bar {
+  width: 95%;
+  background-color: #fff;
+  border-radius: 30px;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+.search_bar i {
+  color: #919191;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.search_bar input {
+  width: 70%;
+  color: #919191;
+  border: none;
+  outline: 0;
 }
 
 .left_container .chat_users {
   height: calc(100% - 195px);
   overflow: hidden;
   overflow-y: auto;
+  cursor: pointer;
 }
 
 .chat_users .user_box {

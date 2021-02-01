@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- Link Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Link Vue -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
     <!-- Link foglio di stile personale -->
@@ -44,10 +44,23 @@
                 </section>
 
                 <!-- Messaggio di allerta notifiche messaggi -->
-                <section class="alert_mex"></section>
+                <section class="alert_mex">
+                    <div class="alert_bell">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div class="alert_text">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                </section>
 
                 <!-- Sezione barra di ricerca chat utenti -->
-                <section class="search_bar"></section>
+                <section class="search_bar_container">
+                    <div class="search_bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                </section>
 
                 <!-- Sezione lista chat utenti -->
                 <section class="chat_users">
@@ -55,11 +68,11 @@
                     <!-- BOX Utente 1 -->
                     <div class="user_box">
                         <div class="img_user_box">
-                            <img src="img/ema.JPG" alt="Emanuele">
+                            <img src="img/papaya.jpg" alt="Niccolò">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
-                                <div class="name">Emanuele</div>
+                                <div class="name">Niccolò</div>
                                 <div class="time">09:58</div>
                             </div>
                             <div class="chat_preview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ullam, illo possimus aspernatur nulla non!</div>
@@ -69,11 +82,11 @@
                     <!-- BOX Utente 2 -->
                     <div class="user_box">
                         <div class="img_user_box">
-                            <img src="img/dave.jpg" alt="Davide">
+                            <img src="img/jack.jpg" alt="Giacomo">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
-                                <div class="name">Davide</div>
+                                <div class="name">Giacomo</div>
                                 <div class="time">09:30</div>
                             </div>
                             <div class="chat_preview">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
@@ -83,11 +96,11 @@
                     <!-- BOX Utente 3 -->
                     <div class="user_box">
                         <div class="img_user_box">
-                            <img src="img/papaya.jpg" alt="Niccolò">
+                            <img src="img/ema.jpg" alt="Emanuele">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
-                                <div class="name">Niccolò</div>
+                                <div class="name">Emanuele</div>
                                 <div class="time">00:17</div>
                             </div>
                             <div class="chat_preview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aut architecto in cum magnam voluptatem!</div>
@@ -97,11 +110,11 @@
                     <!-- BOX Utente 4 -->
                     <div class="user_box">
                         <div class="img_user_box">
-                            <img src="img/jack.jpg" alt="Giacomo">
+                            <img src="img/dave.jpg" alt="Davide">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
-                                <div class="name">Giacomo</div>
+                                <div class="name">Davide</div>
                                 <div class="time">ieri</div>
                             </div>
                             <div class="chat_preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam et, minus odit laboriosam consectetur beatae.</div>
