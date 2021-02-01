@@ -162,6 +162,9 @@ a {
   cursor: pointer;
 }
 
+.chat_users::-webkit-scrollbar-button:no-button {
+}
+
 .chat_users .user_box {
   height: 83px;
   padding: 10px 15px 0;
@@ -216,19 +219,14 @@ a {
   height: 100%;
 }
 
-.right_container .header,
-.right_container .footer_box {
+/* ! Top header DX */
+.right_container .header {
   height: 60px;
   background-color: #ededed;
   border: 0.5px solid rgba(128, 128, 128, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.right_container .chat_box {
-  height: calc(100% - 120px);
-  background-image: url(../img/mine.jpg);
 }
 
 .right_container .header .user_box {
@@ -265,4 +263,42 @@ a {
   font-size: 1.1em;
   color: #919191;
   cursor: pointer;
+}
+/* ! Sezione principale con chat utente */
+.right_container .chat_box {
+  height: calc(100% - 125px);
+  background-image: url(../img/mine.jpg);
+  padding: 10px 50px;
+}
+
+/* !Footer DX con input mex */
+.right_container .footer_box {
+  height: 65px;
+  background-color: #ededed;
+  border: 0.5px solid rgba(128, 128, 128, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.right_container .footer_box i {
+  font-size: 1.4em;
+  color: #919191;
+  cursor: pointer;
+}
+
+.right_container .footer_box i:not(:last-child) {
+  margin-right: 20px;
+}
+
+.right_container .footer_box input {
+  flex-grow: 1;
+  font-size: 1em;
+  color: #919191;
+  margin-right: 20px;
+  padding: 12px;
+  border: none;
+  outline: 0;
+  border-radius: 30px;
 }
