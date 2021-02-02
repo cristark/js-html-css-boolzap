@@ -65,118 +65,19 @@
                 <!-- Sezione lista chat utenti -->
                 <section class="chat_users">
 
-                    <!-- BOX Utente 1 -->
-                    <div class="user_box">
+                    <!-- BOX Utenti -->
+                    <div v-for="element in contacts" class="user_box">
                         <div class="img_user_box">
-                            <img src="img/papaya.jpg" alt="Papaya🥑">
+                            <img :src="'img/'+element.avatar" :alt="element.name">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
-                                <div class="name">Papaya🥑</div>
-                                <div class="time">09:58</div>
+                                <div class="name">{{element.name}}</div>
+                                <div v-for="key in element.messages" class="time"> {{key.date}} </div>
                             </div>
-                            <div class="chat_preview">Belin' oh cri, ci vediamo su Twich!</div>
+                            <div v-for="key in element.messages" class="chat_preview"> {{key.text}} </div>
                         </div>
                     </div>
-
-                    <!-- BOX Utente 2 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/jack.jpg" alt="Giacomo">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Giacomo</div>
-                                <div class="time">09:30</div>
-                            </div>
-                            <div class="chat_preview">Partitina ad Age?? Eeezzz</div>
-                        </div>
-                    </div>
-
-                    <!-- BOX Utente 3 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/ema.jpg" alt="Emanuele">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Emanuele</div>
-                                <div class="time">00:17</div>
-                            </div>
-                            <div class="chat_preview">Dajjeee!!! 💪</div>
-                        </div>
-                    </div>
-
-                    <!-- BOX Utente 4 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/dave.jpg" alt="Davide">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Davide</div>
-                                <div class="time">ieri</div>
-                            </div>
-                            <div class="chat_preview">Tattica del gamberooooo 🦐</div>
-                        </div>
-                    </div>
-
-                    <!-- BOX Utente 5 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/yuri.jpg" alt="Yuri">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Yuri</div>
-                                <div class="time">ieri</div>
-                            </div>
-                            <div class="chat_preview">Oh, ma te l'hai finito lo snack?!</div>
-                        </div>
-                    </div>
-
-                    <!-- BOX Utente 6 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/willyboys.jpg" alt="Willyboys">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Willyboys</div>
-                                <div class="time">ieri</div>
-                            </div>
-                            <div class="chat_preview">Tu: Oh, raga... Niente più Svizzera, si resta in Italia</div>
-                        </div>
-                    </div>
-
-                    <!-- BOX Utente 7 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/giacomo.jpg" alt="Giacomo">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Giacomo</div>
-                                <div class="time">ieri</div>
-                            </div>
-                            <div class="chat_preview">Cristiano vieni su zoom che risolviamo il problema</div>
-                        </div>
-                    </div>
-
-                    <!-- BOX Utente 8 -->
-                    <div class="user_box">
-                        <div class="img_user_box">
-                            <img src="img/download.jpg" alt="Germano">
-                        </div>
-                        <div class="txt_user_box">
-                            <div class="username">
-                                <div class="name">Germano</div>
-                                <div class="time">ieri</div>
-                            </div>
-                            <div class="chat_preview">Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!</div>
-                        </div>
-                    </div>
-                
                 </section>
             </div>
 

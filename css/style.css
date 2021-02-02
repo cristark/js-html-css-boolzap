@@ -24,7 +24,7 @@ a {
 }
 
 .top_background {
-  height: 15vh;
+  height: 125px;
   background-color: #009788;
 }
 
@@ -159,6 +159,16 @@ a {
   height: calc(100% - 195px);
   overflow-y: auto;
   cursor: pointer;
+}
+
+.left_container .chat_users::-moz-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: red; /* or add it to the track */
+}
+/* Add a thumb */
+.left_container .chat_users::-moz-scrollbar-thumb {
+  background: blue;
 }
 
 .chat_users .user_box {
