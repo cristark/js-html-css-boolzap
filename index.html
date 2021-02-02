@@ -12,14 +12,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Link Vue -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <!-- Link foglio di stile personale -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- Background principale con linear gradient -->
-    <div class="background">
+    <div id="app" class="background">
 
         <!-- Top background con sfondo verde -->
         <div class="top_background"></div>
@@ -33,8 +33,8 @@
                 <!-- Top header con icone e immagine profilo -->
                 <section class="header">
                     <div class="user_box">
-                        <img src="img/cris.jpeg" alt="Cristiano">
-                        <p>Cristiano</p>
+                        <img :src="'img/'+personalId.avatar" :alt="personalId.name">
+                        <p> {{personalId.name}} </p>
                     </div>
                     <div class="user_icons">
                         <i class="fas fa-circle-notch"></i>
@@ -201,16 +201,40 @@
                     <!-- Sezione principale con chat utente specifico -->
                     <section class="chat_box">
                         <div class="box sent">
-                            <div class="message">
-                                <p>Weee Jack!! Confermato per domani!</p>
+                            <div class="message sent">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
                                 <div class="time_box">
                                     <p>15:30</p>
-                                    <div class="spunte"></div>
+                                    <i class="fas fa-check"></i>
+                                    <div class="spunte">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="box received">
-                            <div class="message"></div>
+                            <div class="message received">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut repudiandae provident magnam, optio vitae dicta nisi? Asperiores dolorem explicabo tempore dolores labore. Nesciunt nulla ut architecto eius autem placeat ratione!</p>
+                                <div class="time_box">
+                                    <p>15:30</p>
+                                    <i class="fas fa-check"></i>
+                                    <div class="spunte">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box sent">
+                            <div class="message sent">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto molestiae aut at quidem quia esse facere suscipit! Porro dolores nulla doloremque quidem ipsa consectetur atque unde sapiente, laudantium corrupti vel.</p>
+                                <div class="time_box">
+                                    <p>15:30</p>
+                                    <i class="fas fa-check"></i>
+                                    <div class="spunte">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box center">
+                            <p>oggi</p>
                         </div>
                     </section>
 
@@ -218,7 +242,7 @@
                     <section class="footer_box">
                         <i class="far fa-grin-wink"></i>
                         <i class="fas fa-paperclip"></i>
-                        <input type="text" placeholder="Scrivi un messaggio"">
+                        <input type="text" placeholder="Scrivi un messaggio">
                         <i class="fas fa-microphone"></i>
                     </section>
             </div>
@@ -226,6 +250,6 @@
     </div>
 
     <!-- Link Script Javascript -->
-    <!-- <script src="js/script.js" charset="utf-8"></script> -->
+    <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
