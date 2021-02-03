@@ -59,8 +59,8 @@
                 <!-- Sezione barra di ricerca chat utenti -->
                 <section class="search_bar_container">
                     <div class="search_bar">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <i @click="filterChat" @keydown="filterArray" class="fas fa-search"></i>
+                        <input type="text" v-model="searchText" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </section>
 
@@ -68,19 +68,19 @@
                 <section class="chat_users">
 
                     <!-- BOX Utenti -->
-                    <div @click="selectContact(index)" v-for="(element, index) in contacts" class="user_box">
+                    <div @mouseover="mouseOver(element, index)" @mouseleave="element.hover = false" @click="selectContact(index)" v-for="(element, index) in filterArray" class="user_box" :class="classSwitch(element, index)">
                         <div class="img_user_box">
                             <img :src="'img/'+element.avatar" :alt="element.name">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
                                 <div class="name">{{element.name}}</div>
-                                <div v-for="(key, index) in element.messages" v-if="index == element.messages.length-1" class="time">
-                                    {{key.date}}
+                                <div class="time">
+                                    {{element.messages[element.messages.length-1].date}}
                                 </div>
                             </div>
-                            <div v-for="(key, index) in element.messages" v-if="index == element.messages.length-1" class="chat_preview">
-                                {{key.text}}
+                            <div class="chat_preview">
+                                {{element.messages[element.messages.length-1].text}}
                             </div>
                         </div>
                     </div>
@@ -93,9 +93,9 @@
                     <!-- Top header con icone e immagine profilo -->
                     <section class="header">
                         <div class="user_box">
-                            <img :src="'img/'+ contacts[counter].avatar" :alt="contacts[counter].name">
+                            <img :src="'img/'+ filteredContacts[counter].avatar" :alt="filteredContacts[counter].name">
                             <div class="user_text">
-                                <p>{{contacts[counter].name}}</p>
+                                <p>{{filteredContacts[counter].name}}</p>
                                 <p>Ultimo accesso 10 minuti fa</p>
                             </div>
                         </div>
@@ -117,13 +117,15 @@
 
                         <!-- Caselle messaggi per ogni chat -->
                         <div class="box">
-                            <div v-for="(key, index) in contacts[counter].messages" :class="key.status" class="message">
+                            <div v-for="(key, index) in filteredContacts[counter].messages" :class="key.status" class="message">
                                 <p>{{key.text}}</p>
+                                <div class="info_box">
+                                    <!-- <i class="fas fa-chevron-down"></i> -->
+                                </div>
                                 <div class="time_box">
                                     <p>{{key.date}}</p>
                                     <i class="fas fa-check"></i>
-                                    <div class="spunte">
-                                    </div>
+                                    <div class="spunte"></div>
                                 </div>
                             </div>
                         </div>

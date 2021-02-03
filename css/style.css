@@ -179,6 +179,15 @@ a {
   height: 83px;
   padding: 10px 15px 0;
   display: flex;
+  transition: all 0.1s linear;
+}
+
+.chat_users .user_box.hover {
+  background-color: #edededde;
+}
+
+.chat_users .user_box.selected {
+  background-color: #b1b1b171;
 }
 
 .user_box .img_user_box {

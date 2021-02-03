@@ -3,8 +3,9 @@ let app = new Vue({
     el: '#app',
     data: {
         counter: 0,
-        lastMex: 0,
+        counterTemporaneo: 0, //! da capire se togliere o meno
         userText:'',
+        searchText: '',
         personalId: {
             name: 'Cristiano',
             avatar: 'cris.jpg'
@@ -13,7 +14,7 @@ let app = new Vue({
             {
                 name: 'Papaya🥑',
                 avatar: 'papaya.jpg',
-                visible: true,
+                hover: false,
                 messages: [
                     {
                         date: '09:58',
@@ -40,7 +41,7 @@ let app = new Vue({
             {
                 name: 'Giacomo',
                 avatar: 'jack.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: '09:30',
@@ -52,7 +53,7 @@ let app = new Vue({
             {
                 name: 'Emanuele',
                 avatar: 'ema.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: '00:17',
@@ -64,19 +65,24 @@ let app = new Vue({
             {
                 name: 'Davide',
                 avatar: 'dave.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: 'ieri',
                         text: 'Tattica del gamberooooo 🦐',
-                        status: 'sent'
+                        status: 'received'
                     },
+                    {
+                        date: '18:57',
+                        text: 'Un giro di Gin Tonic stasera?',
+                        status: 'sent'
+                    }
                 ]
             },
             {
                 name: 'Yuri',
                 avatar: 'yuri.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: 'ieri',
@@ -88,7 +94,7 @@ let app = new Vue({
             {
                 name: 'Willyboys',
                 avatar: 'willyboys.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: 'ieri',
@@ -100,7 +106,7 @@ let app = new Vue({
             {
                 name: 'Elisabetta',
                 avatar: 'eli.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: 'ieri',
@@ -112,7 +118,7 @@ let app = new Vue({
             {
                 name: 'Giacomo',
                 avatar: 'giacomo.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: 'ieri',
@@ -124,7 +130,7 @@ let app = new Vue({
             {
                 name: 'Mimmo',
                 avatar: 'mimmo.jpg',
-                visible: false,
+                hover: false,
                 messages: [
                     {
                         date: '10:25',
@@ -188,7 +194,8 @@ let app = new Vue({
                     }
                 ]
             }
-        ]
+        ],
+        filteredContacts: []
     },
     created() {
         console.log(moment().locale('it').format('LT'));
@@ -196,11 +203,6 @@ let app = new Vue({
     methods: {
         selectContact(indice){
             this.counter = indice;
-
-            /* this.lastMex = this.contacts[this.counter].messages.length - 1;
-            console.log(this.lastMex);
-
-            console.log(this.contacts[this.counter].messages[this.lastMex].text); */
         },
         addMex() {
             if (this.userText.length > 0) {
@@ -222,6 +224,37 @@ let app = new Vue({
             }
 
             this.userText = '';
+        },
+        classSwitch(element, index) {
+            if(element.hover) {
+                return 'hover';
+            };
+
+            if (index == this.counter) {
+                return 'selected';
+            };
+        },
+        mouseOver(element, index) {
+            if (!element.hover && index != this.counter) {
+                return element.hover = true;
+            }
+        },
+        filterChat() {
+            this.contacts.forEach(element => {
+                if(element.name.includes(this.searchText)) {
+                    this.filteredContacts.push(element);
+                }
+            });
+
+            this.searchText = '';
+        }
+    },
+    computed: {
+
+        filterArray() {
+            return this.filteredContacts = this.contacts.filter(element => {
+                return element.name.toLowerCase().includes(this.searchText.toLowerCase());
+            });
         }
     }
 });
