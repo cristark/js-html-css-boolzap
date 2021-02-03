@@ -314,6 +314,7 @@ a {
 }
 
 .chat_box .box .message {
+  min-width: 80px;
   max-width: 500px;
   padding: 10px 30px 25px 10px;
   box-shadow: 0 0.5px 1px rgba(128, 128, 128, 0.5);

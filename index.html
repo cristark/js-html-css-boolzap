@@ -134,7 +134,7 @@
                         <i class="far fa-grin-wink"></i>
                         <i class="fas fa-paperclip"></i>
                         <input @keyup.enter="addMex" type="text" v-model="userText" placeholder="Scrivi un messaggio">
-                        <i :class="(userText == 0)?'fas fa-microphone':'fas fa-paper-plane'"></i>
+                        <i @click="addMex" :class="(userText == 0)?'fas fa-microphone':'fas fa-paper-plane'"></i>
 
                         <!-- !Alternativa -->
                         <!-- <i v-if="(userText == 0)" class="fas fa-microphone"></i>

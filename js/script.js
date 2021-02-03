@@ -203,12 +203,24 @@ let app = new Vue({
             console.log(this.contacts[this.counter].messages[this.lastMex].text); */
         },
         addMex() {
-            this.contacts[this.counter].messages.push({
-                date: moment().locale('it').format('LT'),
-                text: this.userText,
-                status: 'sent'
-            });
-            
+            if (this.userText.length > 0) {
+                setTimeout(() => {
+                    
+                    this.contacts[this.counter].messages.push({
+                        date: moment().locale('it').format('LT'),
+                        text: 'ok',
+                        status: 'received'
+                    });
+                    
+                }, 2000);
+                
+                this.contacts[this.counter].messages.push({
+                    date: moment().locale('it').format('LT'),
+                    text: this.userText,
+                    status: 'sent'
+                });
+            }
+
             this.userText = '';
         }
     }
