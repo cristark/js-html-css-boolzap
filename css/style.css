@@ -399,6 +399,11 @@ a {
   margin-right: 20px;
 }
 
+.right_container .footer_box i:last-child {
+  width: 25px;
+  text-align: center;
+}
+
 .right_container .footer_box input {
   flex-grow: 1;
   font-size: 1em;

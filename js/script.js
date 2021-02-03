@@ -4,6 +4,7 @@ let app = new Vue({
     data: {
         counter: 0,
         lastMex: 0,
+        userText:'',
         personalId: {
             name: 'Cristiano',
             avatar: 'cris.jpg'
@@ -190,7 +191,7 @@ let app = new Vue({
         ]
     },
     created() {
-        console.log(this.contacts[this.counter][this.lastMex]);
+        console.log(moment().locale('it').format('LT'));
     },
     methods: {
         selectContact(indice){
@@ -200,6 +201,15 @@ let app = new Vue({
             console.log(this.lastMex);
 
             console.log(this.contacts[this.counter].messages[this.lastMex].text); */
+        },
+        addMex() {
+            this.contacts[this.counter].messages.push({
+                date: moment().locale('it').format('LT'),
+                text: this.userText,
+                status: 'sent'
+            });
+            
+            this.userText = '';
         }
     }
 });

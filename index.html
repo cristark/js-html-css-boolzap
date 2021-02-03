@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Link Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- Link Moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
     <!-- Link foglio di stile personale -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -131,8 +133,12 @@
                     <section class="footer_box">
                         <i class="far fa-grin-wink"></i>
                         <i class="fas fa-paperclip"></i>
-                        <input type="text" placeholder="Scrivi un messaggio">
-                        <i class="fas fa-microphone"></i>
+                        <input @keyup.enter="addMex" type="text" v-model="userText" placeholder="Scrivi un messaggio">
+                        <i :class="(userText == 0)?'fas fa-microphone':'fas fa-paper-plane'"></i>
+
+                        <!-- !Alternativa -->
+                        <!-- <i v-if="(userText == 0)" class="fas fa-microphone"></i>
+                        <i v-else class="fas fa-paper-plane"></i> -->
                     </section>
             </div>
         </div>
