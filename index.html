@@ -66,16 +66,20 @@
                 <section class="chat_users">
 
                     <!-- BOX Utenti -->
-                    <div v-for="element in contacts" class="user_box">
+                    <div @click="selectContact(index)" v-for="(element, index) in contacts" class="user_box">
                         <div class="img_user_box">
                             <img :src="'img/'+element.avatar" :alt="element.name">
                         </div>
                         <div class="txt_user_box">
                             <div class="username">
                                 <div class="name">{{element.name}}</div>
-                                <div v-for="key in element.messages" class="time"> {{key.date}} </div>
+                                <div v-for="(key, index) in element.messages" v-if="index == element.messages.length-1" class="time">
+                                    {{key.date}}
+                                </div>
                             </div>
-                            <div v-for="key in element.messages" class="chat_preview"> {{key.text}} </div>
+                            <div v-for="(key, index) in element.messages" v-if="index == element.messages.length-1" class="chat_preview">
+                                {{key.text}}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -87,9 +91,9 @@
                     <!-- Top header con icone e immagine profilo -->
                     <section class="header">
                         <div class="user_box">
-                            <img src="img/jack.jpg" alt="Giacomo">
+                            <img :src="'img/'+ contacts[counter].avatar" :alt="contacts[counter].name">
                             <div class="user_text">
-                                <p>Giacomo</p>
+                                <p>{{contacts[counter].name}}</p>
                                 <p>Ultimo accesso 10 minuti fa</p>
                             </div>
                         </div>
@@ -101,41 +105,25 @@
 
                     <!-- Sezione principale con chat utente specifico -->
                     <section class="chat_box">
-                        <div class="box sent">
-                            <div class="message sent">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+                        
+                        <!-- Indicatore data della serie di messaggi -->
+                        <div class="day_box">
+                            <div class="day center">
+                                <p>oggi</p>
+                            </div>
+                        </div>
+
+                        <!-- Caselle messaggi per ogni chat -->
+                        <div class="box">
+                            <div v-for="(key, index) in contacts[counter].messages" :class="key.status" class="message">
+                                <p>{{key.text}}</p>
                                 <div class="time_box">
-                                    <p>15:30</p>
+                                    <p>{{key.date}}</p>
                                     <i class="fas fa-check"></i>
                                     <div class="spunte">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box received">
-                            <div class="message received">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut repudiandae provident magnam, optio vitae dicta nisi? Asperiores dolorem explicabo tempore dolores labore. Nesciunt nulla ut architecto eius autem placeat ratione!</p>
-                                <div class="time_box">
-                                    <p>15:30</p>
-                                    <i class="fas fa-check"></i>
-                                    <div class="spunte">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box sent">
-                            <div class="message sent">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto molestiae aut at quidem quia esse facere suscipit! Porro dolores nulla doloremque quidem ipsa consectetur atque unde sapiente, laudantium corrupti vel.</p>
-                                <div class="time_box">
-                                    <p>15:30</p>
-                                    <i class="fas fa-check"></i>
-                                    <div class="spunte">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box center">
-                            <p>oggi</p>
                         </div>
                     </section>
 

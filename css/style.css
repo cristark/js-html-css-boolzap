@@ -155,21 +155,25 @@ a {
   outline: 0;
 }
 
+/* ! Sezione lista utenti */
 .left_container .chat_users {
   height: calc(100% - 195px);
   overflow-y: auto;
   cursor: pointer;
 }
 
-.left_container .chat_users::-moz-scrollbar {
-  width: 5px;
-  height: 8px;
-  background-color: red; /* or add it to the track */
+/* ?Scrollbar personalizzata */
+.left_container .chat_users::-webkit-scrollbar,
+.right_container .chat_box::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
 }
-/* Add a thumb */
-.left_container .chat_users::-moz-scrollbar-thumb {
-  background: blue;
+
+.left_container .chat_users::-webkit-scrollbar-thumb,
+.right_container .chat_box::-webkit-scrollbar-thumb {
+  background: lightgrey;
 }
+/* ? /fine Scrollbar personalizzata */
 
 .chat_users .user_box {
   height: 83px;
@@ -276,26 +280,30 @@ a {
   background-image: url(../img/mine.jpg);
   padding: 20px 60px;
   color: #27391f;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-start;
   overflow-y: auto;
 }
 
-.chat_box .box {
+.chat_box .box,
+.chat_box .day_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat_box .day_box {
+  margin-bottom: 20px;
+}
+
+.chat_box .message {
+  max-width: 500px;
   margin-bottom: 20px;
   display: flex;
 }
 
-.chat_box .box.sent {
-  justify-content: flex-end;
+.chat_box .day.center {
+  align-self: center;
 }
 
-.chat_box .box.center {
-  justify-content: center;
-}
-
-.chat_box .box.center p {
+.chat_box .day.center p {
   font-size: 0.7em;
   text-transform: uppercase;
   color: #0e191f;
@@ -313,7 +321,12 @@ a {
   position: relative;
 }
 
+.chat_box .box .message > p {
+  font-size: 0.9em;
+}
+
 .message.sent {
+  align-self: flex-end;
   background-color: #dcf8c7;
   border-radius: 10px 0 10px 10px;
 }
@@ -331,6 +344,7 @@ a {
 }
 
 .message.received {
+  align-self: flex-start;
   background-color: #fff;
   border-radius: 0 10px 10px 10px;
 }
