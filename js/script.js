@@ -15,6 +15,7 @@ let app = new Vue({
                 name: 'Papaya🥑',
                 avatar: 'papaya.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: '09:58',
@@ -42,6 +43,7 @@ let app = new Vue({
                 name: 'Giacomo',
                 avatar: 'jack.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: '09:30',
@@ -54,6 +56,7 @@ let app = new Vue({
                 name: 'Emanuele',
                 avatar: 'ema.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: '00:17',
@@ -66,6 +69,7 @@ let app = new Vue({
                 name: 'Davide',
                 avatar: 'dave.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: 'ieri',
@@ -83,6 +87,7 @@ let app = new Vue({
                 name: 'Yuri',
                 avatar: 'yuri.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: 'ieri',
@@ -95,6 +100,7 @@ let app = new Vue({
                 name: 'Willyboys',
                 avatar: 'willyboys.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: 'ieri',
@@ -107,6 +113,7 @@ let app = new Vue({
                 name: 'Elisabetta',
                 avatar: 'eli.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: 'ieri',
@@ -119,6 +126,7 @@ let app = new Vue({
                 name: 'Giacomo',
                 avatar: 'giacomo.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: 'ieri',
@@ -131,6 +139,7 @@ let app = new Vue({
                 name: 'Mimmo',
                 avatar: 'mimmo.jpg',
                 hover: false,
+                visible: true,
                 messages: [
                     {
                         date: '10:25',
@@ -194,8 +203,7 @@ let app = new Vue({
                     }
                 ]
             }
-        ],
-        filteredContacts: []
+        ]
     },
     created() {
         console.log(moment().locale('it').format('LT'));
@@ -240,21 +248,19 @@ let app = new Vue({
             }
         },
         filterChat() {
-            this.contacts.forEach(element => {
-                if(element.name.includes(this.searchText)) {
-                    this.filteredContacts.push(element);
-                }
-            });
-
-            this.searchText = '';
-        }
-    },
-    computed: {
-
-        filterArray() {
-            return this.filteredContacts = this.contacts.filter(element => {
-                return element.name.toLowerCase().includes(this.searchText.toLowerCase());
-            });
+            if (this.searchText.length > 0) {
+                this.contacts.forEach(element => {
+                    if (element.name.toLowerCase().includes(this.searchText.toLowerCase())) {
+                        element.visible = true;
+                    } else {
+                        element.visible = false;
+                    }
+                });
+            } else {
+                this.contacts.forEach(element => {
+                    element.visible = true;
+                });
+            }
         }
     }
 });

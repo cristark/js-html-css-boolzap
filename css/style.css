@@ -371,6 +371,20 @@ a {
   transform: rotate(45deg);
 }
 
+.chat_box .box .message .info_box {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  padding: 4px 8px;
+  border-radius: 50%;
+  color: #919191;
+}
+
+.chat_box .box .message .info_box i {
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
 .chat_box .box .message .time_box {
   position: absolute;
   display: flex;
