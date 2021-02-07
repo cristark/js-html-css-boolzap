@@ -9,8 +9,13 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+li {
+  list-style-type: none;
+}
+
 a {
   text-decoration: none;
+  color: #0e191f;
 }
 
 /* | MAIN | */
@@ -383,6 +388,27 @@ a {
 .chat_box .box .message .info_box i {
   font-size: 0.8em;
   cursor: pointer;
+}
+
+/* |Menu a tendina messaggi chat */
+.chat_box .box .message .info_box .info_menu {
+  width: 210px;
+  background-color: #fff;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 1;
+}
+
+.info_box .info_menu li {
+  font-size: 0.87em;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.info_box .info_menu li:hover {
+  background-color: #ededed;
 }
 
 .chat_box .box .message .time_box {

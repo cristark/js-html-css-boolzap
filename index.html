@@ -59,7 +59,7 @@
                 <!-- Sezione barra di ricerca chat utenti -->
                 <section class="search_bar_container">
                     <div class="search_bar">
-                        <i @click="filterChat" class="fas fa-search"></i>
+                        <i class="fas fa-search"></i>
                         <input type="text" v-model="searchText" @keyup="filterChat"  placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </section>
@@ -120,7 +120,12 @@
                             <div v-for="(key, index) in contacts[counter].messages" :class="key.status" class="message">
                                 <p>{{key.text}}</p>
                                 <div class="info_box">
-                                    <i class="fas fa-chevron-down"></i>
+                                    <i @click="selectMex(index)" class="fas fa-chevron-down"></i>
+                                    <div class="info_menu" v-if="index == counterMex">
+                                        <ul>
+                                            <li @click="deleteMex(index)" v-for="(element, index) in infoMenu"><a href="#">{{element}}</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="time_box">
                                     <p>{{key.date}}</p>

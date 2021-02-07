@@ -3,7 +3,7 @@ let app = new Vue({
     el: '#app',
     data: {
         counter: 0,
-        counterTemporaneo: 0, //! da capire se togliere o meno
+        counterMex: null,
         userText:'',
         searchText: '',
         personalId: {
@@ -197,20 +197,21 @@ let app = new Vue({
                         status: 'sent'
                     },
                     {
-                        date: '11:01',
+                        date: 'domenica',
                         text: 'Anche No, l\'ultimo capolavoro di Bruno Liegi Bastonliegi.',
                         status: 'received'
                     }
                 ]
             }
-        ]
+        ],
+        infoMenu: ['Rispondi','Inoltra messaggio','Messaggio Importante','Elimina Messaggio',]
     },
     created() {
-        console.log(moment().locale('it').format('LT'));
     },
     methods: {
         selectContact(indice){
             this.counter = indice;
+            this.counterMex = null;
         },
         addMex() {
             if (this.userText.length > 0) {
@@ -261,6 +262,31 @@ let app = new Vue({
                     element.visible = true;
                 });
             }
+        },
+        selectMex(index) {
+            this.counterMex = index;
+            console.log(this.counterMex);
+        },
+        deleteMex(index) {
+            if (index == this.infoMenu.length - 1) {    
+
+                this.contacts[this.counter].messages.splice(this.counterMex, 1);
+                console.log(this.contacts[this.counter].messages);
+                console.log(this.contacts);
+
+                if (this.contacts[this.counter].messages.length == 0) {
+                    this.contacts[this.counter].messages.push({
+                        date: moment().locale('it').format('LT'),
+                        text: 'Inizia una nuova chat con ' + this.contacts[this.counter].name + '!',
+                        status: 'received'
+                    });
+                }
+            }
+
+            this.counterMex = null;
+        },
+        generaRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
         }
     }
 });
