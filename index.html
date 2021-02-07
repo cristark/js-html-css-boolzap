@@ -141,7 +141,7 @@
                                     <p>{{key.text}}</p>
                                     <div class="info_box">
                                         <i @click="selectMex(index)" class="fas fa-chevron-down"></i>
-                                        <div class="info_menu received" v-if="index == counterMex" :class="(contacts[counter].messages[counterMex].status == 'received')?'right':''">
+                                        <div class="info_menu" v-if="index == counterMex" :class="(contacts[counter].messages[counterMex].status == 'received')?'right':''">
                                             <ul>
                                                 <li @click="deleteMex(index)" v-for="(element, index) in infoMenu"><a href="#">{{element}}</a></li>
                                             </ul>

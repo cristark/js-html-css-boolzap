@@ -3,6 +3,7 @@ let app = new Vue({
     el: '#app',
     data: {
         counter: -1,
+        timesClicked: 0,
         counterMex: null,
         delDisplay: false,
         userText:'',
@@ -215,8 +216,7 @@ let app = new Vue({
             }
         ],
         infoMenu: ['Rispondi','Inoltra messaggio','Messaggio Importante','Elimina Messaggio'],
-        accessesList: ['online', 'Sta scrivendo...', 'Ultimo accesso di recente', 'Ultimo accesso'],
-        access: '',
+        accessesList: ['online', 'Sta scrivendo...', 'Ultimo accesso di recente', 'Ultimo accesso']
     },
     created() {
         this.contacts.forEach(element => {
@@ -230,6 +230,8 @@ let app = new Vue({
         },
         addMex() {
             if (this.userText.length > 0) {
+
+                let time = this.generaRandom(3,6) * 1000;
                 
                 this.contacts[this.counter].messages.push({
                     date: moment().locale('it').format('LT'),
@@ -239,11 +241,11 @@ let app = new Vue({
 
                 setTimeout(() => {
                     this.contacts[this.counter].access = this.accessesList[0];
-                }, 2500);
+                }, time);
 
                 setTimeout(() => {
                     this.contacts[this.counter].access = this.accessesList[1];
-                }, 4000);
+                }, time + 1500);
 
                 setTimeout(() => {
                     
@@ -255,11 +257,11 @@ let app = new Vue({
 
                     this.contacts[this.counter].access = this.accessesList[0]
 
-                }, 6000);
+                }, time + 3500);
 
                 setTimeout(() => {
                     this.contacts[this.counter].access = this.accessesList[2];
-                }, 10000);
+                }, time + 5500);
             }
 
             this.userText = '';
@@ -294,9 +296,13 @@ let app = new Vue({
             }
         },
         selectMex(index) {
-            this.counterMex = index;
-            console.log(this.counterMex);
-            console.log(this.contacts[this.counter].messages[this.counterMex].status);
+            if (this.timesClicked == 0) {
+                this.counterMex = index;
+                this.timesClicked++;
+            } else {
+                this.counterMex = null;
+                this.timesClicked--;
+            }
         },
         deleteMex(index) {
             if (index == this.infoMenu.length - 1) {    
@@ -305,17 +311,15 @@ let app = new Vue({
         },
         deleteMexConfirm() {
             this.contacts[this.counter].messages.splice(this.counterMex, 1);
-                console.log(this.contacts[this.counter].messages);
-                console.log(this.contacts);
 
-                if (this.contacts[this.counter].messages.length == 0) {
-                    this.contacts[this.counter].messages.push({
-                        date: moment().locale('it').format('LT'),
-                        text: 'Inizia una nuova chat con ' + this.contacts[this.counter].name + '!',
-                        status: 'received'
-                    });
-                }
-                
+            if (this.contacts[this.counter].messages.length == 0) {
+                this.contacts[this.counter].messages.push({
+                    date: moment().locale('it').format('LT'),
+                    text: 'Inizia una nuova chat con ' + this.contacts[this.counter].name + '!',
+                    status: 'received'
+                });
+            }
+
             this.counterMex = null;
             this.delDisplay = false;
         },

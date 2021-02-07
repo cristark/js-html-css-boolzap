@@ -471,7 +471,24 @@ a {
 
 .chat_box .box .message .info_box i {
   font-size: 0.8em;
+  display: none;
+}
+
+.chat_box .box .message:hover > .info_box i {
+  display: block;
   cursor: pointer;
+  animation: displayIcon 0.2s linear;
+}
+
+@keyframes displayIcon {
+  0% {
+    opacity: 0;
+    font-size: 0.01em;
+  }
+  100% {
+    opacity: 1;
+    font-size: 0.8em;
+  }
 }
 
 /* |Menu a tendina messaggi chat */
