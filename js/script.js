@@ -14,6 +14,7 @@ let app = new Vue({
         contacts: [
             {
                 name: 'Papaya🥑',
+                access: '',
                 avatar: 'papaya.jpg',
                 hover: false,
                 visible: true,
@@ -42,6 +43,7 @@ let app = new Vue({
             },
             {
                 name: 'Giacomo',
+                access: '',
                 avatar: 'jack.jpg',
                 hover: false,
                 visible: true,
@@ -55,6 +57,7 @@ let app = new Vue({
             },
             {
                 name: 'Emanuele',
+                access: '',
                 avatar: 'ema.jpg',
                 hover: false,
                 visible: true,
@@ -68,6 +71,7 @@ let app = new Vue({
             },
             {
                 name: 'Davide',
+                access: '',
                 avatar: 'dave.jpg',
                 hover: false,
                 visible: true,
@@ -86,6 +90,7 @@ let app = new Vue({
             },
             {
                 name: 'Yuri',
+                access: '',
                 avatar: 'yuri.jpg',
                 hover: false,
                 visible: true,
@@ -99,6 +104,7 @@ let app = new Vue({
             },
             {
                 name: 'Willyboys',
+                access: '',
                 avatar: 'willyboys.jpg',
                 hover: false,
                 visible: true,
@@ -112,6 +118,7 @@ let app = new Vue({
             },
             {
                 name: 'Elisabetta',
+                access: '',
                 avatar: 'eli.jpg',
                 hover: false,
                 visible: true,
@@ -125,6 +132,7 @@ let app = new Vue({
             },
             {
                 name: 'Giacomo',
+                access: '',
                 avatar: 'giacomo.jpg',
                 hover: false,
                 visible: true,
@@ -138,6 +146,7 @@ let app = new Vue({
             },
             {
                 name: 'Mimmo',
+                access: '',
                 avatar: 'mimmo.jpg',
                 hover: false,
                 visible: true,
@@ -205,9 +214,14 @@ let app = new Vue({
                 ]
             }
         ],
-        infoMenu: ['Rispondi','Inoltra messaggio','Messaggio Importante','Elimina Messaggio',]
+        infoMenu: ['Rispondi','Inoltra messaggio','Messaggio Importante','Elimina Messaggio'],
+        accessesList: ['online', 'Sta scrivendo...', 'Ultimo accesso di recente', 'Ultimo accesso'],
+        access: '',
     },
     created() {
+        this.contacts.forEach(element => {
+            element.access = this.accessesList[3] + ' ' + this.randomAccess();
+        });
     },
     methods: {
         selectContact(indice){
@@ -216,6 +230,21 @@ let app = new Vue({
         },
         addMex() {
             if (this.userText.length > 0) {
+                
+                this.contacts[this.counter].messages.push({
+                    date: moment().locale('it').format('LT'),
+                    text: this.userText,
+                    status: 'sent'
+                });
+
+                setTimeout(() => {
+                    this.contacts[this.counter].access = this.accessesList[0];
+                }, 2500);
+
+                setTimeout(() => {
+                    this.contacts[this.counter].access = this.accessesList[1];
+                }, 4000);
+
                 setTimeout(() => {
                     
                     this.contacts[this.counter].messages.push({
@@ -223,14 +252,14 @@ let app = new Vue({
                         text: 'ok',
                         status: 'received'
                     });
-                    
-                }, 2000);
-                
-                this.contacts[this.counter].messages.push({
-                    date: moment().locale('it').format('LT'),
-                    text: this.userText,
-                    status: 'sent'
-                });
+
+                    this.contacts[this.counter].access = this.accessesList[0]
+
+                }, 6000);
+
+                setTimeout(() => {
+                    this.contacts[this.counter].access = this.accessesList[2];
+                }, 10000);
             }
 
             this.userText = '';
@@ -296,6 +325,18 @@ let app = new Vue({
         },
         generaRandom(min, max) {
             return Math.floor(Math.random() * (max - min + 1) ) + min;
+        },
+        randomAccess() {
+            const timeArr = ['ore', 'minuti'];
+            const time = timeArr[this.generaRandom(0,1)];
+            
+            if (time == 'ore') {
+                newTime = this.generaRandom(2,23) + ' ' + time + ' fa';
+            } else {
+                newTime = this.generaRandom(2,59) + ' ' + time + ' fa';
+            }
+
+            return newTime;
         }
     }
 });
