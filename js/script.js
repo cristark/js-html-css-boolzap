@@ -2,8 +2,9 @@ let app = new Vue({
 
     el: '#app',
     data: {
-        counter: 0,
+        counter: -1,
         counterMex: null,
+        delDisplay: false,
         userText:'',
         searchText: '',
         personalId: {
@@ -266,11 +267,15 @@ let app = new Vue({
         selectMex(index) {
             this.counterMex = index;
             console.log(this.counterMex);
+            console.log(this.contacts[this.counter].messages[this.counterMex].status);
         },
         deleteMex(index) {
             if (index == this.infoMenu.length - 1) {    
-
-                this.contacts[this.counter].messages.splice(this.counterMex, 1);
+                this.delDisplay = true;
+            }
+        },
+        deleteMexConfirm() {
+            this.contacts[this.counter].messages.splice(this.counterMex, 1);
                 console.log(this.contacts[this.counter].messages);
                 console.log(this.contacts);
 
@@ -281,9 +286,13 @@ let app = new Vue({
                         status: 'received'
                     });
                 }
-            }
-
+                
             this.counterMex = null;
+            this.delDisplay = false;
+        },
+        deleteMexUndo() {
+            this.counterMex = null;
+            this.delDisplay = false;
         },
         generaRandom(min, max) {
             return Math.floor(Math.random() * (max - min + 1) ) + min;
